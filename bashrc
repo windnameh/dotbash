@@ -2,12 +2,10 @@
 #
 # Author: Colors Huang
 # Email: windnameh@gmail.com
-# Version: 2013.Feb.18
 #
 # ~/.bashrc
 #
 # ------------------------------------------
-
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -63,7 +61,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h: \w \$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -114,7 +112,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # git completion
-source ~/.git-completion.bash
+if [ -f ~/.bash/git-completion.bash ]; then
+source ~/.bash/git-completion.bash
+fi
 
 ## history command auto-completion
 bind '"\e[A": history-search-backward'
@@ -155,11 +155,11 @@ man() {
 }
 
 # 256 colors terminal
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+#if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
-fi
+#else
+#    export TERM='xterm-color'
+#fi
 
 
 
